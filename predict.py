@@ -14,12 +14,12 @@ class Predictor(cog.Predictor):
     def setup(self):
         parser = argparse.ArgumentParser()
         parser.add_argument(
-            "--input_folder", type=str, default="input/cog_temp"+ datetime.utcnow().timestamp(), help="Test images"
+            "--input_folder", type=str, default="input/cog_temp"+ str(datetime.utcnow().timestamp()), help="Test images"
         )
         parser.add_argument(
             "--output_folder",
             type=str,
-            default="output"+ datetime.utcnow().timestamp(),
+            default="output"+ str(datetime.utcnow().timestamp()),
             help="Restored images, please use the absolute path",
         )
         parser.add_argument("--GPU", type=str, default="0", help="0,1,2")
