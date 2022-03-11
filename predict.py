@@ -7,18 +7,19 @@ import glob
 import cv2
 import cog
 from run import run_cmd
+from datetime import datetime
 
 
 class Predictor(cog.Predictor):
     def setup(self):
         parser = argparse.ArgumentParser()
         parser.add_argument(
-            "--input_folder", type=str, default="input/cog_temp", help="Test images"
+            "--input_folder", type=str, default="input/cog_temp"+ int(datetime.utcnow().timestamp()), help="Test images"
         )
         parser.add_argument(
             "--output_folder",
             type=str,
-            default="output",
+            default="output"+ int(datetime.utcnow().timestamp()),
             help="Restored images, please use the absolute path",
         )
         parser.add_argument("--GPU", type=str, default="0", help="0,1,2")
