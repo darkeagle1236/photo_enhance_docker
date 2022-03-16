@@ -8,9 +8,11 @@ import cv2
 import cog
 from run import run_cmd
 from datetime import datetime
-
+import torch, gc
 
 class Predictor(cog.Predictor):
+	gc.collect()
+	torch.cuda.empty_cache()
     def setup(self):
         parser = argparse.ArgumentParser()
         parser.add_argument(
