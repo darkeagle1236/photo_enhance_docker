@@ -8,7 +8,6 @@ import cv2
 import cog
 from run import run_cmd
 from datetime import datetime
-import torch, gc
 
 class Predictor(cog.Predictor):
     def setup(self):
@@ -51,9 +50,6 @@ class Predictor(cog.Predictor):
     )
     def predict(self, image, HR=False, with_scratch=False):
         try:
-
-	gc.collect()
-	torch.cuda.empty_cache()
             os.chdir(self.basepath)
             input_path = os.path.join(self.opts.input_folder, os.path.basename(image))
             shutil.copy(str(image), input_path)
